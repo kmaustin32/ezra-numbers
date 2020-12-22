@@ -1,0 +1,19 @@
+{
+  "name": "ezra-numbers",
+  "version": "1.0.0",
+  "description": "Facts about numbers with Numbers API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmaustin32/ezra-numbers.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kmaustin32/ezra-numbers/issues"
+  },
+  "homepage": "https://github.com/kmaustin32/ezra-numbers#readme"
+}
