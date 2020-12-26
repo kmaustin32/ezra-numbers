@@ -1,11 +1,12 @@
 import React from 'react';
+import {motion} from 'framer-motion';
 
 const TitleSection = () => {
 
     return(
-        <div className="title">
+        <motion.div className="title">
             <h1>Number Facts!</h1>
-        </div>
+        </motion.div>
     )
 }
 

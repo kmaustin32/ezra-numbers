@@ -1,11 +1,14 @@
 import React from 'react';
+import {motion} from 'framer-motion';
 
 const NumInput = () => {
 
     return(
-        <div>
-            <h2>Number Input</h2>
-        </div>
+        <motion.div className='inputContainer'>
+            <input type="text"/>
+            <button>Submit</button>
+            <button>Random</button>
+        </motion.div>
     )
 }
 

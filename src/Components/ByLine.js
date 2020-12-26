@@ -1,11 +1,13 @@
 import React from 'react';
+import {motion} from 'framer-motion';
 
 const ByLine = () => {
 
     return(
-        <div>
-            <p>byLine</p>
-        </div>
+        <motion.div>
+            <p>App by Keenan "Ezra" Austin</p>
+            <p>Built with React 2020</p>
+        </motion.div>
     )
 }
 

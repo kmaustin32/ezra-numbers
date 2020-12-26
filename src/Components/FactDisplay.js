@@ -1,11 +1,12 @@
 import React from 'react';
+import {motion} from 'framer-motion';
 
 const FactDisplay = () => {
     
     return(
-        <div>
+        <motion.div className='factContainer'>
             <h2>Fact Display</h2>
-        </div>
+        </motion.div>
     )
 }
 

@@ -6,6 +6,7 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
         top: 0;
         left: 0;
+        font-family: monospace; 
     }
 `;
 
