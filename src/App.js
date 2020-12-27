@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 //Style
 import GlobalStyle from './GlobalStyle';
 import {motion} from 'framer-motion';
@@ -9,8 +9,14 @@ import FactDisplay from './Components/FactDisplay';
 import NumInput from './Components/NumInput';
 import ByLine from './Components/ByLine';
 import TitleSection from './Components/TitleSection';
+//Axios
 
 const App = () => {
+
+    const [info, setInfo] = useState({
+        selectedNum: 0,
+        numInfo: "Let's get started! Pick a number."
+    });
 
     return(
         <StyledApp 
@@ -26,13 +32,16 @@ const App = () => {
             </StyledHide>
             <StyledHide
             variants={zoomDiv}>
-                <FactDisplay />
+                <FactDisplay
+                info={info} />
             </StyledHide>
             <StyledHide
             variants={fadeDiv}
             initial='hidden'
             animate='show'>
-                <NumInput />
+                <NumInput
+                info={info}
+                setInfo={setInfo} />
             </StyledHide>
             <StyledHide
             variants={zoomDiv}>

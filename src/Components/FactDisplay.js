@@ -1,14 +1,20 @@
 import React from 'react';
 import {motion} from 'framer-motion';
-import {zoomDiv} from '../animations';
+import styled from 'styled-components';
 
-const FactDisplay = () => {
+
+const FactDisplay = ({info}) => {
     
     return(
-        <motion.div>
-            <h2>Fact Display</h2>
-        </motion.div>
+        <StyledFact>
+            <h2>{info.numInfo}</h2>
+        </StyledFact>
     )
 }
+
+const StyledFact = styled(motion.div)`
+    overflow: hidden;
+    padding: 2rem 8rem;
+`;
 
 export default FactDisplay;
