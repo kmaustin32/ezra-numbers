@@ -8,6 +8,11 @@ const GlobalStyle = createGlobalStyle`
         left: 0;
         font-family: monospace; 
     }
+    button {
+        cursor: pointer;
+    }
 `;
 
+
 export default GlobalStyle;
+
