@@ -8,8 +8,20 @@ const GlobalStyle = createGlobalStyle`
         left: 0;
         font-family: monospace; 
     }
+    body {
+        background-color: #91e7ff;
+    }
     button {
         cursor: pointer;
+    }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: .75rem;
     }
 `;
 

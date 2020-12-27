@@ -53,3 +53,18 @@ export const zoomDiv = {
     }
 };
 
+export const fadeDiv = {
+    hidden: {
+        scale: 1.5,
+        opacity: 0,
+    },
+    show: {
+        scale: 1,
+        opacity: 1,
+        transition: {
+            duration: 1,
+            delay: 3.25
+        }
+    },
+}
+

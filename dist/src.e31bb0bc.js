@@ -32057,7 +32057,7 @@ exports.default = void 0;
 var _styledComponents = require("styled-components");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    * {\n        padding: 0;\n        margin: 0;\n        top: 0;\n        left: 0;\n        font-family: monospace; \n    }\n    button {\n        cursor: pointer;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    * {\n        padding: 0;\n        margin: 0;\n        top: 0;\n        left: 0;\n        font-family: monospace; \n    }\n    body {\n        background-color: #91e7ff;\n    }\n    button {\n        cursor: pointer;\n    }\n    h1 {\n        font-size: 3rem;\n    }\n    h2 {\n        font-size: 2rem;\n    }\n    p {\n        font-size: .75rem;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -43240,7 +43240,7 @@ function useInvertedScale(scale) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.zoomDiv = exports.fadePage = void 0;
+exports.fadeDiv = exports.zoomDiv = exports.fadePage = void 0;
 //Animations
 //Will decide which to use as I go
 //When -beforeChildren, staggerChildren -time
@@ -43295,6 +43295,21 @@ var zoomDiv = {
   }
 };
 exports.zoomDiv = zoomDiv;
+var fadeDiv = {
+  hidden: {
+    scale: 1.5,
+    opacity: 0
+  },
+  show: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      duration: 1,
+      delay: 3.25
+    }
+  }
+};
+exports.fadeDiv = fadeDiv;
 },{}],"Components/FactDisplay.js":[function(require,module,exports) {
 "use strict";
 
@@ -43331,19 +43346,34 @@ var _framerMotion = require("framer-motion");
 
 var _animations = require("../animations");
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    input {\n        padding: .75rem;\n        width: 100%;\n        box-sizing: border-box;\n    }\n    button {\n        width: 50%;\n        padding: .75rem;\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 var NumInput = function NumInput() {
-  return _react.default.createElement(_framerMotion.motion.div, {
+  return _react.default.createElement(StyledInput, {
     className: "inputContainer"
   }, _react.default.createElement("input", {
     type: "text"
   }), _react.default.createElement("button", null, "Submit"), _react.default.createElement("button", null, "Random"));
 };
 
+var StyledInput = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject());
 var _default = NumInput;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","../animations":"animations.js"}],"Components/ByLine.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","../animations":"animations.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/ByLine.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43357,15 +43387,30 @@ var _framerMotion = require("framer-motion");
 
 var _animations = require("../animations");
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    text-align: center;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 var ByLine = function ByLine() {
-  return _react.default.createElement(_framerMotion.motion.div, null, _react.default.createElement("p", null, "App by Keenan \"Ezra\" Austin"), _react.default.createElement("p", null, "Built with React 2020"));
+  return _react.default.createElement(StyledBy, null, _react.default.createElement("p", null, "App by Keenan \"Ezra\" Austin"), _react.default.createElement("p", null, "Built with React 2020"));
 };
 
+var StyledBy = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject());
 var _default = ByLine;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","../animations":"animations.js"}],"Components/TitleSection.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","../animations":"animations.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"Components/TitleSection.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43415,6 +43460,16 @@ var _TitleSection = _interopRequireDefault(require("./Components/TitleSection"))
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: space-evenly;\n    margin: 8rem 30rem 5rem 30rem;\n    min-height: 75vh;\n    background-color: whitesmoke;\n    border-radius: 2rem;\n    border: 3px solid black;\n    @media (max-width: 1500px) {\n        margin: 8rem 20rem 5rem 20rem;\n    }\n    @media (max-width: 1000px) {\n        margin: 8rem 10rem 5rem 10rem;\n    }\n    @media (max-width: 800px) {\n        margin: 8rem 5rem 3rem 5rem;\n    }\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n    overflow: hidden;\n"]);
 
@@ -43428,7 +43483,7 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var App = function App() {
-  return _react.default.createElement(_framerMotion.motion.div, {
+  return _react.default.createElement(StyledApp, {
     className: "App",
     variants: _animations.fadePage,
     initial: "hidden",
@@ -43439,13 +43494,16 @@ var App = function App() {
   }, _react.default.createElement(_TitleSection.default, null)), _react.default.createElement(StyledHide, {
     variants: _animations.zoomDiv
   }, _react.default.createElement(_FactDisplay.default, null)), _react.default.createElement(StyledHide, {
-    variants: _animations.zoomDiv
+    variants: _animations.fadeDiv,
+    initial: "hidden",
+    animate: "show"
   }, _react.default.createElement(_NumInput.default, null)), _react.default.createElement(StyledHide, {
     variants: _animations.zoomDiv
   }, _react.default.createElement(_ByLine.default, null)));
 };
 
 var StyledHide = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject());
+var StyledApp = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject2());
 var _default = App;
 exports.default = _default;
 },{"react":"../node_modules/react/index.js","./GlobalStyle":"GlobalStyle.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","./animations":"animations.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","./Components/FactDisplay":"Components/FactDisplay.js","./Components/NumInput":"Components/NumInput.js","./Components/ByLine":"Components/ByLine.js","./Components/TitleSection":"Components/TitleSection.js"}],"index.js":[function(require,module,exports) {
@@ -43488,7 +43546,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62879" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49974" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
