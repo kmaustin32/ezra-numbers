@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 
 const FactDisplay = ({info}) => {
-    
+
     return(
         <StyledFact>
             <h2>{info.numInfo}</h2>

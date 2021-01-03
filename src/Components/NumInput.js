@@ -34,16 +34,17 @@ const NumInput = ({info, setInfo}) => {
             });
         } else {
             setInfo({
-                numInfo: result.data
-            })
-        }
-    }
+                numInfo: result.data,
+                selectedNum: ''
+            });
+        };
+    };
 
     return(
         <StyledInput className='inputContainer'>
             <input 
             type="text"
-            placeholder="type a number here"
+            placeholder='input text here'
             onChange={updateTextHandler} />
             <button onClick={randomHandler}>Random?</button>
             <button onClick={searchHandler}>Go!</button>

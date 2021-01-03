@@ -32057,7 +32057,7 @@ exports.default = void 0;
 var _styledComponents = require("styled-components");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    * {\n        padding: 0;\n        margin: 0;\n        top: 0;\n        left: 0;\n        font-family: monospace; \n    }\n    body {\n        background-color: #91e7ff;\n    }\n    button {\n        cursor: pointer;\n    }\n    h1 {\n        font-size: 3rem;\n    }\n    h2 {\n        font-size: 2rem;\n    }\n    p {\n        font-size: .75rem;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    * {\n        padding: 0;\n        margin: 0;\n        top: 0;\n        left: 0;\n        font-family: monospace; \n    }\n    body {\n        background-color: #616464;\n    }\n    button {\n        cursor: pointer;\n    }\n    h1 {\n        font-size: 3rem;\n    }\n    h2 {\n        font-size: 2rem;\n    }\n    p {\n        font-size: .75rem;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -43240,7 +43240,7 @@ function useInvertedScale(scale) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.fadeDiv = exports.zoomDiv = exports.fadePage = void 0;
+exports.factFade = exports.fadeDiv = exports.zoomDiv = exports.fadePage = void 0;
 //Animations
 //Will decide which to use as I go
 //When -beforeChildren, staggerChildren -time
@@ -43310,6 +43310,18 @@ var fadeDiv = {
   }
 };
 exports.fadeDiv = fadeDiv;
+var factFade = {
+  hidden: {
+    opacity: 0
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 1
+    }
+  }
+};
+exports.factFade = factFade;
 },{}],"Components/FactDisplay.js":[function(require,module,exports) {
 "use strict";
 
@@ -45764,11 +45776,14 @@ var NumInput = function NumInput(_ref) {
                 });
               } else {
                 setInfo({
-                  numInfo: result.data
+                  numInfo: result.data,
+                  selectedNum: ''
                 });
               }
 
-            case 5:
+              ;
+
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -45785,7 +45800,7 @@ var NumInput = function NumInput(_ref) {
     className: "inputContainer"
   }, _react.default.createElement("input", {
     type: "text",
-    placeholder: "type a number here",
+    placeholder: "input text here",
     onChange: updateTextHandler
   }), _react.default.createElement("button", {
     onClick: randomHandler
@@ -45887,7 +45902,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: space-evenly;\n    margin: 8rem 30rem 5rem 30rem;\n    min-height: 75vh;\n    background-color: whitesmoke;\n    border-radius: 2rem;\n    border: 3px solid black;\n    @media (max-width: 1500px) {\n        margin: 8rem 20rem 5rem 20rem;\n    }\n    @media (max-width: 1000px) {\n        margin: 8rem 10rem 5rem 10rem;\n    }\n    @media (max-width: 800px) {\n        margin: 8rem 5rem 3rem 5rem;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: space-evenly;\n    margin: 8rem 30rem 5rem 30rem;\n    min-height: 75vh;\n    background-color: whitesmoke;\n    border: 3px solid black;\n    @media (max-width: 1500px) {\n        margin: 7rem 20rem 6rem 20rem;\n    }\n    @media (max-width: 1000px) {\n        margin: 8rem 10rem 5rem 10rem;\n    }\n    @media (max-width: 800px) {\n        margin: 8rem 5rem 3rem 5rem;\n    }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -45941,7 +45956,8 @@ var App = function App() {
   }, _react.default.createElement(_TitleSection.default, null)), _react.default.createElement(StyledHide, {
     variants: _animations.zoomDiv
   }, _react.default.createElement(_FactDisplay.default, {
-    info: info
+    info: info,
+    setInfo: setInfo
   })), _react.default.createElement(StyledHide, {
     variants: _animations.fadeDiv,
     initial: "hidden",
@@ -46000,7 +46016,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60614" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57151" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

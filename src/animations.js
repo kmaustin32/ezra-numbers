@@ -68,3 +68,14 @@ export const fadeDiv = {
     },
 }
 
+export const factFade = {
+    hidden: {
+        opacity: 0
+    },
+    show: {
+        opacity: 1,
+        transition: {
+            duration: 1
+        }
+    }
+}

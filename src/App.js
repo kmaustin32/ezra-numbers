@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 //Style
 import GlobalStyle from './GlobalStyle';
-import {motion} from 'framer-motion';
+import {motion, AnimatePresence} from 'framer-motion';
 import {fadePage, zoomDiv, fadeDiv} from './animations';
 import styled from 'styled-components';
 //Components
@@ -33,7 +33,8 @@ const App = () => {
             <StyledHide
             variants={zoomDiv}>
                 <FactDisplay
-                info={info} />
+                info={info}
+                setInfo={setInfo} />
             </StyledHide>
             <StyledHide
             variants={fadeDiv}
@@ -63,10 +64,9 @@ const StyledApp = styled(motion.div)`
     margin: 8rem 30rem 5rem 30rem;
     min-height: 75vh;
     background-color: whitesmoke;
-    border-radius: 2rem;
     border: 3px solid black;
     @media (max-width: 1500px) {
-        margin: 8rem 20rem 5rem 20rem;
+        margin: 7rem 20rem 6rem 20rem;
     }
     @media (max-width: 1000px) {
         margin: 8rem 10rem 5rem 10rem;
