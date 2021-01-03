@@ -1,16 +1,26 @@
 import React from 'react';
-import {motion} from 'framer-motion';
+import {motion, AnimatePresence} from 'framer-motion';
 import styled from 'styled-components';
+import {factFade} from '../animations';
 
 
-const FactDisplay = ({info}) => {
+
+const FactDisplay = ({info, loading}) => {
 
     return(
         <StyledFact>
-            <h2>{info.numInfo}</h2>
+            <AnimatePresence>
+            {!loading && 
+                <motion.h2 
+                variants={factFade}
+                initial='hidden'
+                animate='show'
+                exit='exit'>{info.numInfo}</motion.h2>}    
+            </AnimatePresence>
         </StyledFact>
     )
 }
+
 
 const StyledFact = styled(motion.div)`
     overflow: hidden;

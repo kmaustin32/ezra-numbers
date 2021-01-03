@@ -75,7 +75,14 @@ export const factFade = {
     show: {
         opacity: 1,
         transition: {
-            duration: 1
+            duration: .5,
+            ease: 'easeOut'
+        }
+    },
+    exit: {
+        opacity: 0,
+        transition: {
+            duration: .5
         }
     }
 }

@@ -43317,7 +43317,14 @@ var factFade = {
   show: {
     opacity: 1,
     transition: {
-      duration: 1
+      duration: .5,
+      ease: 'easeOut'
+    }
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: .5
     }
   }
 };
@@ -43336,6 +43343,8 @@ var _framerMotion = require("framer-motion");
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
+var _animations = require("../animations");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
@@ -43351,14 +43360,20 @@ function _templateObject() {
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var FactDisplay = function FactDisplay(_ref) {
-  var info = _ref.info;
-  return _react.default.createElement(StyledFact, null, _react.default.createElement("h2", null, info.numInfo));
+  var info = _ref.info,
+      loading = _ref.loading;
+  return _react.default.createElement(StyledFact, null, _react.default.createElement(_framerMotion.AnimatePresence, null, !loading && _react.default.createElement(_framerMotion.motion.h2, {
+    variants: _animations.factFade,
+    initial: "hidden",
+    animate: "show",
+    exit: "exit"
+  }, info.numInfo)));
 };
 
 var StyledFact = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject());
 var _default = FactDisplay;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","../animations":"animations.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -45740,7 +45755,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var NumInput = function NumInput(_ref) {
   var info = _ref.info,
-      setInfo = _ref.setInfo;
+      setInfo = _ref.setInfo,
+      loading = _ref.loading,
+      setLoading = _ref.setLoading;
   //API Requests
   var base_url = "http://numbersapi.com/".concat(info.selectedNum);
 
@@ -45763,22 +45780,28 @@ var NumInput = function NumInput(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              setInfo(_extends({}, info, {
+                numInfo: ''
+              }));
+              _context.next = 3;
               return _axios.default.get(base_url);
 
-            case 2:
+            case 3:
               result = _context.sent;
-              console.log(info.selectedNum);
 
               if (info.selectedNum == '') {
-                setInfo({
-                  numInfo: "Let's get started! Pick a number."
-                });
+                setLoading(true);
+                setInfo(_extends({}, info, {
+                  numInfo: 'Try again'
+                }));
+                setLoading(false);
               } else {
+                setLoading(true);
                 setInfo({
                   numInfo: result.data,
                   selectedNum: ''
                 });
+                setLoading(false);
               }
 
               ;
@@ -45801,6 +45824,7 @@ var NumInput = function NumInput(_ref) {
   }, _react.default.createElement("input", {
     type: "text",
     placeholder: "input text here",
+    value: info.selectedNum,
     onChange: updateTextHandler
   }), _react.default.createElement("button", {
     onClick: randomHandler
@@ -45938,12 +45962,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 //Axios
 var App = function App() {
   var _useState = (0, _react.useState)({
-    selectedNum: 0,
+    selectedNum: '',
     numInfo: "Let's get started! Pick a number."
   }),
       _useState2 = _slicedToArray(_useState, 2),
       info = _useState2[0],
       setInfo = _useState2[1];
+
+  var _useState3 = (0, _react.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      loading = _useState4[0],
+      setLoading = _useState4[1];
 
   return _react.default.createElement(StyledApp, {
     className: "App",
@@ -45957,14 +45986,17 @@ var App = function App() {
     variants: _animations.zoomDiv
   }, _react.default.createElement(_FactDisplay.default, {
     info: info,
-    setInfo: setInfo
+    setInfo: setInfo,
+    loading: loading
   })), _react.default.createElement(StyledHide, {
     variants: _animations.fadeDiv,
     initial: "hidden",
     animate: "show"
   }, _react.default.createElement(_NumInput.default, {
     info: info,
-    setInfo: setInfo
+    setInfo: setInfo,
+    loading: loading,
+    setLoading: setLoading
   })), _react.default.createElement(StyledHide, {
     variants: _animations.zoomDiv
   }, _react.default.createElement(_ByLine.default, null)));
@@ -46016,7 +46048,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57151" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58521" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

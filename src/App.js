@@ -14,9 +14,10 @@ import TitleSection from './Components/TitleSection';
 const App = () => {
 
     const [info, setInfo] = useState({
-        selectedNum: 0,
+        selectedNum: '',
         numInfo: "Let's get started! Pick a number."
     });
+    const [loading, setLoading] = useState(false);
 
     return(
         <StyledApp 
@@ -34,7 +35,8 @@ const App = () => {
             variants={zoomDiv}>
                 <FactDisplay
                 info={info}
-                setInfo={setInfo} />
+                setInfo={setInfo}
+                loading={loading} />
             </StyledHide>
             <StyledHide
             variants={fadeDiv}
@@ -42,7 +44,9 @@ const App = () => {
             animate='show'>
                 <NumInput
                 info={info}
-                setInfo={setInfo} />
+                setInfo={setInfo}
+                loading={loading}
+                setLoading={setLoading} />
             </StyledHide>
             <StyledHide
             variants={zoomDiv}>

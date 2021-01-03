@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { async } from 'regenerator-runtime';
 
-const NumInput = ({info, setInfo}) => {
+const NumInput = ({info, setInfo, loading, setLoading}) => {
 
      //API Requests
     const base_url = `http://numbersapi.com/${info.selectedNum}`;
@@ -13,7 +13,7 @@ const NumInput = ({info, setInfo}) => {
     const updateTextHandler = (event) => {
         setInfo({
             ...info,
-            selectedNum: event.target.value,
+            selectedNum: event.target.value
         });
     };
 
@@ -25,18 +25,27 @@ const NumInput = ({info, setInfo}) => {
         });
     };
 
-    const searchHandler = async() => {
+    const searchHandler = async() => { 
+        setInfo({
+            ...info,
+            numInfo: ''
+        });
         let result = await axios.get(base_url);
-        console.log(info.selectedNum);
+
         if(info.selectedNum == '') {
+            setLoading(true);
             setInfo({
-                numInfo: "Let's get started! Pick a number."
+                ...info,
+                numInfo: 'Try again'
             });
+            setLoading(false)
         } else {
+            setLoading(true);
             setInfo({
                 numInfo: result.data,
                 selectedNum: ''
             });
+            setLoading(false);
         };
     };
 
@@ -45,6 +54,7 @@ const NumInput = ({info, setInfo}) => {
             <input 
             type="text"
             placeholder='input text here'
+            value={info.selectedNum}
             onChange={updateTextHandler} />
             <button onClick={randomHandler}>Random?</button>
             <button onClick={searchHandler}>Go!</button>
