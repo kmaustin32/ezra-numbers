@@ -43373,7 +43373,7 @@ var _Displayed = _interopRequireDefault(require("./Displayed"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    overflow: hidden;\n    padding: 2rem 8rem;\n"]);
+  var data = _taggedTemplateLiteral(["\n    overflow: hidden;\n    padding: 2rem 8rem;\n\n    @media (max-width: 768px) {\n        padding: 1rem 4rem;\n        h2 {\n            font-size: 1.5rem;\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -45764,7 +45764,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    input {\n        padding: .75rem;\n        width: 100%;\n        box-sizing: border-box;\n    }\n    button {\n        width: 50%;\n        padding: .75rem;\n        border: 2px solid black;\n        transition: all .5s ease;\n        outline: none;\n    }\n    button:hover {\n        background-color: #12063d;\n        color: whitesmoke;\n        font-weight: bold;\n        border: 2px solid white;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    input {\n        padding: .75rem;\n        width: 100%;\n        box-sizing: border-box;\n        outline: none;\n    }\n    button {\n        width: 50%;\n        padding: .75rem;\n        border: 2px solid black;\n        transition: all .5s ease;\n        outline: none;\n    }\n    button:hover {\n        background-color: #12063d;\n        color: whitesmoke;\n        font-weight: bold;\n        border: 2px solid white;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -45848,7 +45848,7 @@ var NumInput = function NumInput(_ref) {
     className: "inputContainer"
   }, _react.default.createElement("input", {
     type: "text",
-    placeholder: "input text here",
+    placeholder: "Input a number here...",
     value: info.selectedNum,
     onChange: updateTextHandler
   }), _react.default.createElement("button", {
@@ -45908,17 +45908,32 @@ var _react = _interopRequireDefault(require("react"));
 
 var _framerMotion = require("framer-motion");
 
+var _styledComponents = _interopRequireDefault(require("styled-components"));
+
 var _animations = require("../animations");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    @media (max-width: 768px) {\n        h1 {\n            font-size: 2rem;\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 var TitleSection = function TitleSection() {
-  return _react.default.createElement(_framerMotion.motion.div, null, _react.default.createElement("h1", null, "Number Facts!"));
+  return _react.default.createElement(StyledTitle, null, _react.default.createElement("h1", null, "Number Facts!"));
 };
 
+var StyledTitle = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject());
 var _default = TitleSection;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","../animations":"animations.js"}],"App.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","../animations":"animations.js"}],"App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46073,7 +46088,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62183" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62903" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

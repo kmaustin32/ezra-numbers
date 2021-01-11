@@ -53,7 +53,7 @@ const NumInput = ({info, setInfo, loading, setLoading}) => {
         <StyledInput className='inputContainer'>
             <input 
             type="text"
-            placeholder='input text here'
+            placeholder='Input a number here...'
             value={info.selectedNum}
             onChange={updateTextHandler} />
             <button onClick={randomHandler}>Random?</button>
@@ -67,6 +67,7 @@ const StyledInput = styled(motion.div)`
         padding: .75rem;
         width: 100%;
         box-sizing: border-box;
+        outline: none;
     }
     button {
         width: 50%;
