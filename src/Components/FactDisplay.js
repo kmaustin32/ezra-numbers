@@ -2,6 +2,7 @@ import React from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import styled from 'styled-components';
 import {factFade} from '../animations';
+import Displayed from './Displayed';
 
 
 
@@ -11,11 +12,13 @@ const FactDisplay = ({info, loading}) => {
         <StyledFact>
             <AnimatePresence>
             {!loading && 
-                <motion.h2 
+                <Displayed 
                 variants={factFade}
                 initial='hidden'
                 animate='show'
-                exit='exit'>{info.numInfo}</motion.h2>}    
+                exit='exit'
+                info={info.numInfo}>
+                </Displayed>}    
             </AnimatePresence>
         </StyledFact>
     )

@@ -26,21 +26,21 @@ const NumInput = ({info, setInfo, loading, setLoading}) => {
     };
 
     const searchHandler = async() => { 
+        setLoading(true);
         setInfo({
             ...info,
             numInfo: ''
         });
+        
         let result = await axios.get(base_url);
 
         if(info.selectedNum == '') {
-            setLoading(true);
             setInfo({
                 ...info,
                 numInfo: 'Try again'
             });
             setLoading(false)
         } else {
-            setLoading(true);
             setInfo({
                 numInfo: result.data,
                 selectedNum: ''
@@ -71,6 +71,15 @@ const StyledInput = styled(motion.div)`
     button {
         width: 50%;
         padding: .75rem;
+        border: 2px solid black;
+        transition: all .5s ease;
+        outline: none;
+    }
+    button:hover {
+        background-color: #12063d;
+        color: whitesmoke;
+        font-weight: bold;
+        border: 2px solid white;
     }
 `;
 

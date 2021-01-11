@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: monospace; 
     }
     body {
-        background-color: #616464;
+        background-color: #12063d;
     }
     button {
         cursor: pointer;

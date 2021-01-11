@@ -4,12 +4,8 @@ import {factFade} from '../animations'
 
 const Displayed = ({info}) => {
     return(
-        <motion.div
-        variants={factFade}
-        initial='hidden'
-        animate='show'
-        exit='hidden'>
-            <h2>{info.numInfo}</h2>
+        <motion.div>
+            <h2>{info}</h2>
         </motion.div>
     )
 };

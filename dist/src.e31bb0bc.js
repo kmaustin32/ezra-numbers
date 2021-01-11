@@ -32057,7 +32057,7 @@ exports.default = void 0;
 var _styledComponents = require("styled-components");
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    * {\n        padding: 0;\n        margin: 0;\n        top: 0;\n        left: 0;\n        font-family: monospace; \n    }\n    body {\n        background-color: #616464;\n    }\n    button {\n        cursor: pointer;\n    }\n    h1 {\n        font-size: 3rem;\n    }\n    h2 {\n        font-size: 2rem;\n    }\n    p {\n        font-size: .75rem;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    * {\n        padding: 0;\n        margin: 0;\n        top: 0;\n        left: 0;\n        font-family: monospace; \n    }\n    body {\n        background-color: #12063d;\n    }\n    button {\n        cursor: pointer;\n    }\n    h1 {\n        font-size: 3rem;\n    }\n    h2 {\n        font-size: 2rem;\n    }\n    p {\n        font-size: .75rem;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -43329,7 +43329,30 @@ var factFade = {
   }
 };
 exports.factFade = factFade;
-},{}],"Components/FactDisplay.js":[function(require,module,exports) {
+},{}],"Components/Displayed.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _framerMotion = require("framer-motion");
+
+var _animations = require("../animations");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Displayed = function Displayed(_ref) {
+  var info = _ref.info;
+  return _react.default.createElement(_framerMotion.motion.div, null, _react.default.createElement("h2", null, info));
+};
+
+var _default = Displayed;
+exports.default = _default;
+},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","../animations":"animations.js"}],"Components/FactDisplay.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43344,6 +43367,8 @@ var _framerMotion = require("framer-motion");
 var _styledComponents = _interopRequireDefault(require("styled-components"));
 
 var _animations = require("../animations");
+
+var _Displayed = _interopRequireDefault(require("./Displayed"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -43362,18 +43387,19 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var FactDisplay = function FactDisplay(_ref) {
   var info = _ref.info,
       loading = _ref.loading;
-  return _react.default.createElement(StyledFact, null, _react.default.createElement(_framerMotion.AnimatePresence, null, !loading && _react.default.createElement(_framerMotion.motion.h2, {
+  return _react.default.createElement(StyledFact, null, _react.default.createElement(_framerMotion.AnimatePresence, null, !loading && _react.default.createElement(_Displayed.default, {
     variants: _animations.factFade,
     initial: "hidden",
     animate: "show",
-    exit: "exit"
-  }, info.numInfo)));
+    exit: "exit",
+    info: info.numInfo
+  })));
 };
 
 var StyledFact = (0, _styledComponents.default)(_framerMotion.motion.div)(_templateObject());
 var _default = FactDisplay;
 exports.default = _default;
-},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","../animations":"animations.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","framer-motion":"../node_modules/framer-motion/dist/framer-motion.es.js","styled-components":"../node_modules/styled-components/dist/styled-components.browser.esm.js","../animations":"animations.js","./Displayed":"Components/Displayed.js"}],"../node_modules/axios/lib/helpers/bind.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -45738,7 +45764,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    input {\n        padding: .75rem;\n        width: 100%;\n        box-sizing: border-box;\n    }\n    button {\n        width: 50%;\n        padding: .75rem;\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    input {\n        padding: .75rem;\n        width: 100%;\n        box-sizing: border-box;\n    }\n    button {\n        width: 50%;\n        padding: .75rem;\n        border: 2px solid black;\n        transition: all .5s ease;\n        outline: none;\n    }\n    button:hover {\n        background-color: #12063d;\n        color: whitesmoke;\n        font-weight: bold;\n        border: 2px solid white;\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -45780,23 +45806,22 @@ var NumInput = function NumInput(_ref) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              setLoading(true);
               setInfo(_extends({}, info, {
                 numInfo: ''
               }));
-              _context.next = 3;
+              _context.next = 4;
               return _axios.default.get(base_url);
 
-            case 3:
+            case 4:
               result = _context.sent;
 
               if (info.selectedNum == '') {
-                setLoading(true);
                 setInfo(_extends({}, info, {
                   numInfo: 'Try again'
                 }));
                 setLoading(false);
               } else {
-                setLoading(true);
                 setInfo({
                   numInfo: result.data,
                   selectedNum: ''
@@ -45806,7 +45831,7 @@ var NumInput = function NumInput(_ref) {
 
               ;
 
-            case 6:
+            case 7:
             case "end":
               return _context.stop();
           }
@@ -46048,7 +46073,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58521" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62183" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
